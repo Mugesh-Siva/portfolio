@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inbox Priority Widget | Mugesh Siva</title>
+  <meta name="description" content="Open-source AI Gmail desktop widget. Classifies emails with AI, detects deadlines, shows a daily brief, and drafts replies | all without opening Gmail. Python, MIT License, Aug 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="project-page">
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">MS<span>.</span></a>
+    <div class="nav-links"><a href="../index.html#about">About</a><a href="../index.html#projects">Work</a><a href="../index.html#contact">Contact</a></div>
+    <button class="nav-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="project-hero">
+  <div class="container">
+    <a href="../index.html#projects" class="project-hero-back"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back to all projects</a>
+    <div class="project-status status-oss"><span class="status-dot"></span>Open Source | MIT License | Aug 2026</div>
+    <h1 class="project-page-title">Inbox Priority<br/>Widget</h1>
+    <p class="project-page-sub">An AI-powered Gmail desktop widget that lives on your Windows wallpaper. It reads your inbox, classifies emails with an LLM, surfaces urgent items, detects deadlines, and drafts replies | without ever opening Gmail.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="project-preview reveal"><img src="../assets/email-widget-preview.jpg" alt="Inbox Priority Widget on Windows desktop" /></div>
+</div>
+
+<div class="project-body">
+  <div class="container">
+    <div class="project-grid">
+      <div>
+        <h2 class="project-section-title reveal">Overview</h2>
+        <p class="project-overview reveal delay-1">The Inbox Priority Widget is a Python desktop application built in August 2026 - completed in about a week. It uses the Gmail API (read-only OAuth2 scope) to pull emails every 90 seconds, classifies them using an OpenRouter AI model, and displays them as a floating, borderless glass panel on the Windows desktop | always behind other windows, like a Rainmeter widget.</p>
+        <p class="project-overview reveal delay-2">The classification results are cached so repeated emails don't burn through API quota. When a free-tier rate limit is hit, the widget falls back to a secondary model automatically. The project is MIT licensed and open-source.</p>
+
+        <h2 class="project-section-title reveal">Key Features</h2>
+        <div class="project-features reveal delay-1">
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Multi-account Gmail support</strong>: Connect multiple Google accounts. The widget polls all of them on a 90-second interval and merges results into a unified, priority-sorted inbox view.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>AI classification</strong>: Each email is categorised as Urgent, Work, Personal, or Newsletter using an OpenRouter LLM. Categories are displayed with color-coded badges (red, blue, grey, collapsed).</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Classification caching</strong>: Once an email is classified, the result is stored in a local cache keyed by message ID. Re-polling never re-classifies the same email, so free-tier API keys last significantly longer.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Automatic model fallback</strong>: If the primary OpenRouter model hits a rate limit, the widget silently falls back to a secondary model without user intervention or widget restart.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Daily AI brief</strong>: A 2-3 sentence summary generated at the top of the widget each day: "You have 3 urgent emails from David and HR. 2 high-priority tasks are due by Friday. Focus on Urgent and Work categories today."</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Deadline detection</strong>: Detects time-bound language in email subjects and bodies | "by Friday", "EOD", "before Tuesday", "ASAP" | and displays deadline chips on those email rows.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>AI draft replies</strong>: Click any email row to ask the AI to draft a reply. The draft appears in a text panel for review and copy-paste. The widget never sends emails automatically.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Windows 11 Mica/Acrylic glass</strong>: The widget window uses Windows 11's backdrop blur APIs via Tkinter + ctypes, giving it the same frosted-glass appearance as native Windows 11 panels.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Desktop-embedded</strong>: The window stays behind all other windows (HWND_BOTTOM), is draggable, resizable, and has a settings panel for quiet hours and display preferences.</p></div>
+        </div>
+
+        <h2 class="project-section-title reveal">Challenges &amp; Solutions</h2>
+        <div class="project-challenges reveal delay-1">
+          <div class="challenge-item">
+            <div class="challenge-problem">Keeping the widget behind all windows on Windows 11</div>
+            <div class="challenge-solution">Used ctypes to call SetWindowPos(HWND_BOTTOM) after every focus event, since Windows may bring windows to the front on certain interactions. A background timer periodically re-sends the widget to the bottom of the Z-order.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">API quota exhaustion on free-tier models</div>
+            <div class="challenge-solution">Classification caching means each unique email is only ever classified once. Even with 50 emails, the API might only see 5-10 new ones per poll cycle. Combined with the automatic fallback to a secondary model, the widget stays functional 24/7 on free keys.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Reliable OAuth2 token refresh without a web server</div>
+            <div class="challenge-solution">Used Google's google-auth-oauthlib InstalledAppFlow, which opens a local browser tab for the OAuth consent screen and spins up a temporary localhost server to catch the callback. Tokens are stored in a local file and refreshed silently on expiry.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-sidebar">
+        <div class="sidebar-card reveal">
+          <span class="sidebar-label">Tech Stack</span>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">Python</span><span class="sidebar-tag">Tkinter</span>
+            <span class="sidebar-tag">Gmail API</span><span class="sidebar-tag">Google OAuth2</span>
+            <span class="sidebar-tag">OpenRouter AI</span><span class="sidebar-tag">google-auth-oauthlib</span>
+            <span class="sidebar-tag">ctypes</span><span class="sidebar-tag">pywhatkit</span>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-1">
+          <span class="sidebar-label">License</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-3);line-height:1.7;">MIT License<br/>Open Source<br/>August 2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-nav-links reveal">
+      <a href="college-events.html" class="project-nav-link"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Prev: College Events</a>
+      <a href="workforce.html" class="project-nav-link">Next: Work Force<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><p class="footer-copy">Mugesh Siva | AI &amp; Data Science Engineer</p><a href="../index.html" class="footer-back">Back to Portfolio</a></div></footer>
+<script src="../js/config.js"></script>`n<script src="../js/main.js"></script>
+</body>
+</html>
+

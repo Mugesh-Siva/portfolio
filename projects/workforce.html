@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work Force | Mugesh Siva</title>
+  <meta name="description" content="React Native gig platform connecting workers and recruiters. Live on Google Play Store. Firebase, FCM, Cloud Functions. Built mid-2024." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="project-page">
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">MS<span>.</span></a>
+    <div class="nav-links"><a href="../index.html#about">About</a><a href="../index.html#projects">Work</a><a href="../index.html#contact">Contact</a></div>
+    <button class="nav-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="project-hero">
+  <div class="container">
+    <a href="../index.html#projects" class="project-hero-back"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back to all projects</a>
+    <div class="project-status status-live"><span class="status-dot"></span>Live on Google Play Store</div>
+    <h1 class="project-page-title">Work Force</h1>
+    <p class="project-page-sub">A gig economy platform connecting workers with recruiters for short-term and part-time opportunities. Real-time job listings, crew invite system, and role-based profiles. Published on Google Play Store in mid-2024.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="project-preview reveal"><img src="../assets/workforce-preview.jpg" alt="Work Force app on Android" /></div>
+</div>
+
+<div class="project-body">
+  <div class="container">
+    <div class="project-grid">
+      <div>
+        <h2 class="project-section-title reveal">Overview</h2>
+        <p class="project-overview reveal delay-1">Work Force is a React Native mobile application published on the Google Play Store in mid-2024. It addresses the friction in the informal gig economy | where workers and recruiters have no reliable, structured way to connect for short-duration opportunities like warehouse shifts, delivery driving, event staffing, or logistics work.</p>
+        <p class="project-overview reveal delay-2">The app is built on Firebase | Auth for identity, Firestore for real-time data, Cloud Functions for server-side logic, Cloud Messaging for push notifications, and Storage for profile images. React Navigation handles the role-aware routing between Worker and Recruiter flows.</p>
+
+        <h2 class="project-section-title reveal">Key Features</h2>
+        <div class="project-features reveal delay-1">
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Real-time gig listings</strong>: Recruiters post gig opportunities with title, category (Logistics/Tech/Driving), location, pay rate, and recruiter contact. Workers see listings update in real time via Firestore listeners.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>One-tap enrollment</strong>: Workers apply for gigs with a single tap. Recruiters see all applicants and can confirm enrollments. The enrolled worker receives a push notification (FCM) with job details.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Crew invite system</strong>: Recruiters can invite specific workers to private gig opportunities. Workers receive invite notifications and can accept or decline from the app.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Role-based profiles</strong>: Worker profiles show skills, past gigs, ratings, and an availability toggle. Recruiter profiles show company name, active listings, and posted history. Role is set at registration.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Push notifications</strong>: Firebase Cloud Messaging delivers enrollment confirmations, crew invites, and listing updates. Handled by Cloud Functions triggered on Firestore document events.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Category filtering</strong>: Workers filter listings by All / Logistics / Tech / Driving. Filter state persists across navigation.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Bottom tab navigation</strong>: Home (listings), Jobs (enrolled/active), Profile, and Notifications | all built with React Navigation's bottom tab navigator.</p></div>
+        </div>
+
+        <h2 class="project-section-title reveal">Challenges &amp; Solutions</h2>
+        <div class="project-challenges reveal delay-1">
+          <div class="challenge-item">
+            <div class="challenge-problem">Real-time listing updates on mobile without excessive battery drain</div>
+            <div class="challenge-solution">Firestore's onSnapshot listeners are attached only when the Home screen is focused (using React Navigation's useFocusEffect). When the user navigates away, the listener is unsubscribed. This prevents continuous background polling and reduces battery and bandwidth usage.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Server-side push notification logic without a backend</div>
+            <div class="challenge-solution">Firebase Cloud Functions (Node.js) trigger on Firestore writes | when an enrollment document is created, the function reads the worker's FCM token and sends a notification via the Firebase Admin SDK. No server to maintain.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Role-based navigation without exposing wrong screens</div>
+            <div class="challenge-solution">At login, the user's role is read from their Firestore profile document and stored in React Context. The root navigator renders either the Worker stack or Recruiter stack based on this role | so the wrong screens are never mounted, not just hidden.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-sidebar">
+        <div class="sidebar-card reveal">
+          <span class="sidebar-label">Tech Stack</span>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">React Native</span><span class="sidebar-tag">Expo</span>
+            <span class="sidebar-tag">React Navigation</span><span class="sidebar-tag">Firebase Auth</span>
+            <span class="sidebar-tag">Firestore</span><span class="sidebar-tag">Cloud Functions</span>
+            <span class="sidebar-tag">FCM</span><span class="sidebar-tag">Firebase Storage</span>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-1">
+          <span class="sidebar-label">Links</span>
+          <div class="sidebar-links">
+            <a href="#" data-config-href="playStoreUrl" target="_blank" rel="noopener" class="sidebar-link">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M3.18 23.76c.42.23.9.26 1.33.07l12.93-7.47-2.9-2.9zm15.3-13.64L4.51.15C4.08-.04 3.6 0 3.18.24L13.71 10.8zm2.57 4.28c.28-.19.43-.49.43-.8s-.15-.61-.43-.8L18.2 12l-3.04 3.05 3.03 3.03zm-17.16 5L3.87.96 14.4 11.5z"/></svg>
+              View on Play Store
+            </a>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-2">
+          <span class="sidebar-label">Status</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-3);line-height:1.7;">Live on Google Play Store<br/>Published mid-2024<br/>Package: com.gigs.network</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-nav-links reveal">
+      <a href="inbox-widget.html" class="project-nav-link"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Prev: Inbox Widget</a>
+      <a href="hospital-management.html" class="project-nav-link">Next: Hospital System<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><p class="footer-copy">Mugesh Siva | AI &amp; Data Science Engineer</p><a href="../index.html" class="footer-back">Back to Portfolio</a></div></footer>
+<script src="../js/config.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memoro | Mugesh Siva</title>
+  <meta name="description" content="AI memory assistant with cryptographic key identity, RAG retrieval, and continuous voice capture. Built with React Native and Gemini 2.0 Flash. Final year project, Mar 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="project-page">
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">MS<span>.</span></a>
+    <div class="nav-links"><a href="../index.html#about">About</a><a href="../index.html#projects">Work</a><a href="../index.html#contact">Contact</a></div>
+    <button class="nav-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="project-hero">
+  <div class="container">
+    <a href="../index.html#projects" class="project-hero-back"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back to all projects</a>
+    <div class="project-status status-done"><span class="status-dot"></span>Completed | Mar 2026 &middot; Final Year Project</div>
+    <h1 class="project-page-title">Memoro</h1>
+    <p class="project-page-sub">An AI-powered memory assistant that continuously captures your voice, stores everything you say, and recalls it on demand. Identity is a 256-bit cryptographic key | no accounts, no passwords, no servers that know who you are.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="project-preview reveal"><img src="../assets/memoro-preview.jpg" alt="Memoro AI Memory Assistant" /></div>
+</div>
+
+<div class="project-body">
+  <div class="container">
+    <div class="project-grid">
+      <div>
+        <h2 class="project-section-title reveal">Overview</h2>
+        <p class="project-overview reveal delay-1">Memoro is the final year project, completed in March 2026. The concept is inspired by MIT research into personal AI assistants and the principle of sovereign identity from cryptographic systems. Instead of creating an account, your identity is a randomly generated 256-bit key | similar to a crypto wallet's private key. Lose it and your data is inaccessible to everyone, including the server.</p>
+        <p class="project-overview reveal delay-2">Built with React Native 0.81.5 and Expo SDK 54, the app runs on iOS and Android. The AI layer uses Google Gemini 2.0 Flash, which processes voice-transcribed memory context and responds in 1.5-3 seconds. Memories are stored locally and synced to Cloudinary when online.</p>
+
+        <h2 class="project-section-title reveal">Key Features</h2>
+        <div class="project-features reveal delay-1">
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Cryptographic identity</strong>: 256-bit key generated via expo-crypto (SHA-256). No username, no email, no password. The key IS you. Stored securely in expo-secure-store.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Continuous voice capture</strong>: expo-speech transcribes everything you say in real time. Transcriptions are stored as timestamped memories in under 100ms.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Dual AI mode</strong>: Conversational mode uses the last 20 memories as context. Memory mode uses keyword-scored RAG retrieval (TF-IDF style) across all stored memories for deep recall. Intent detection decides which mode to use automatically.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Intent detection engine</strong>: 5 pattern categories with 88% true positive accuracy. Detects whether you're asking a question, making a note, requesting recall, describing an observation, or expressing a thought.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Security layers</strong>: PIN + biometric authentication (Face ID / Fingerprint via expo-local-authentication). Progressive lockout: 30s after 3 failures, scaling up to 24h. Brute-force resistant.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Offline-first with auto sync</strong>: All memories stored locally (AsyncStorage). When connectivity is detected, memories sync to Cloudinary automatically in the background.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Up to 1,000 memories</strong>: A circular buffer ensures the oldest memory is evicted when the cap is reached, keeping the local store fast and bounded.</p></div>
+        </div>
+
+        <h2 class="project-section-title reveal">Challenges &amp; Solutions</h2>
+        <div class="project-challenges reveal delay-1">
+          <div class="challenge-item">
+            <div class="challenge-problem">Identity without a server</div>
+            <div class="challenge-solution">Used expo-crypto to generate a 256-bit key at first launch, stored with expo-secure-store. The key is the only thing that can decrypt and access cloud-synced memories | no backend authentication layer needed at all.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Knowing when to use RAG vs. conversational context</div>
+            <div class="challenge-solution">The intent detection engine classifies each input before it hits Gemini. If classified as a recall or question intent, the RAG retriever scores all memories by keyword relevance and injects the top-ranked ones into the prompt. For conversational intents, only the last 20 memories are used | keeping token cost low and responses fast.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Brute-force protection without a server</div>
+            <div class="challenge-solution">Failure counts and lockout timestamps are stored locally. Each failed attempt doubles the lockout period (30s → 2m → 8m → 24h). The lockout persists across app restarts, so clearing app cache doesn't reset it without wiping storage entirely.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-sidebar">
+        <div class="sidebar-card reveal">
+          <span class="sidebar-label">Tech Stack</span>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">React Native 0.81</span><span class="sidebar-tag">Expo SDK 54</span>
+            <span class="sidebar-tag">TypeScript</span><span class="sidebar-tag">Gemini 2.0 Flash</span>
+            <span class="sidebar-tag">expo-speech</span><span class="sidebar-tag">expo-crypto</span>
+            <span class="sidebar-tag">expo-secure-store</span><span class="sidebar-tag">expo-local-auth</span>
+            <span class="sidebar-tag">AsyncStorage</span><span class="sidebar-tag">Cloudinary</span>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-1">
+          <span class="sidebar-label">Performance</span>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">Intent accuracy 88%</span>
+            <span class="sidebar-tag">&lt;100ms voice-to-memory</span>
+            <span class="sidebar-tag">1.5-3s AI response</span>
+            <span class="sidebar-tag">Up to 1,000 memories</span>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-2">
+          <span class="sidebar-label">Context</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-3);line-height:1.7;">Final Year Project<br/>B.Tech AI &amp; Data Science<br/>March 2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-nav-links reveal">
+      <a href="hotbyte.html" class="project-nav-link"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Prev: HotByte</a>
+      <a href="college-events.html" class="project-nav-link">Next: thecollegeevents.com<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><p class="footer-copy">Mugesh Siva | AI &amp; Data Science Engineer</p><a href="../index.html" class="footer-back">Back to Portfolio</a></div></footer>
+<script src="../js/config.js"></script>`n<script src="../js/main.js"></script>
+</body>
+</html>
+

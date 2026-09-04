@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mugesh Siva | AI & Data Science Engineer</title>
+  <meta name="description"
+    content="Portfolio of Mugesh Siva | AI & Data Science Engineer. B.Tech graduate building full-stack systems, mobile apps, and AI-powered products." />
+  <meta name="author" content="Mugesh Siva" />
+  <meta property="og:title" content="Mugesh Siva | AI & Data Science Engineer" />
+  <meta property="og:description"
+    content="Full-stack engineer and AI builder. 6 projects, ranging from ML-powered hospital systems to live mobile apps." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    #particle-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo profile-logo">
+        <img src="assets/navbar-photo.jpeg" alt="Mugesh Siva" class="nav-profile-pic" />
+        <span class="nav-profile-name">Mugesh Siva</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Work</a>
+        <a href="#training">Certs</a>
+        <a href="#achievements">Awards</a>
+        <a href="#timeline">Timeline</a>
+      </div>
+      <a href="mailto:mugeshsiva123456@gmail.com" data-config-mailto class="nav-cta">Let's Collaborate</a>
+      <button class="nav-menu-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="hero" class="grid-bg">
+    <canvas id="particle-canvas"></canvas>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <span class="hero-tag">Available for freelance & consulting</span>
+          <h1 class="hero-name" data-scramble="MUGESH SIVA">MUGESH SIVA<span class="accent-dot">.</span></h1>
+          <div class="hero-skill-cycle" id="hero-skill-cycle" aria-live="polite">
+            <span class="skill-cycle-prefix">// </span>
+            <div class="skill-cycle-window">
+              <span class="skill-cycle-text" id="skill-cycle-text">FULL STACK DEVELOPER</span>
+            </div>
+          </div>
+          <p class="hero-role">AI &amp; Data Science Engineer | Full Stack Developer</p>
+          <p class="hero-descriptor" id="hero-descriptor"><span></span><span class="cursor-blink"></span></p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+              View My Work
+            </a>
+            <a href="#" data-config-href="linkedin" target="_blank" rel="noopener" class="btn-linkedin">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+              Let's Connect
+            </a>
+            <a href="assets/Mugesh_Siva_Resume.pdf" download class="btn-secondary">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+              </svg>
+              Download Resume
+            </a>
+          </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-frame">
+            <img src="assets/mugesh.jpg" alt="Mugesh Siva" />
+          </div>
+          <div class="hero-photo-badge">
+            <div class="badge-stat">7+</div>
+            <div class="badge-label">Projects Built</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ ABOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <span class="section-label reveal">About</span>
+          <h2 class="about-statement reveal delay-1">
+            I build systems that solve<br />
+            <span class="highlight">real problems.</span>
+          </h2>
+          <p class="about-body reveal delay-2">
+            B.Tech graduate in Artificial Intelligence &amp; Data Science from Veltech Multitech Engineering College
+            (2026),
+            with hands-on experience across the full stack, including React, Spring Boot, React Native, FastAPI, and
+            cloud infrastructure.
+            I've shipped 2 live products and built everything from ML-powered hospital dashboards to AI memory
+            assistants
+            inspired by MIT research.
+          </p>
+          <p class="about-body reveal delay-3">
+            Based in Chennai, Tamil Nadu. Currently a Maverick at Hexaware Technologies.
+            Open to freelance projects, consulting, and open-source contributions in software engineering, AI
+            application development,
+            and systems architecture.
+          </p>
+        </div>
+        <div>
+          <div class="about-stats reveal delay-2">
+            <div class="stat-card">
+              <div class="stat-number"><span data-count="8.06" data-suffix="" data-decimal="true">0</span></div>
+              <div class="stat-label">CGPA | B.Tech AI &amp; DS</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number"><span data-count="6" data-suffix="+">0</span></div>
+              <div class="stat-label">Full Projects Built</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number"><span data-count="4" data-suffix="">0</span></div>
+              <div class="stat-label">Internships Completed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number"><span data-count="2" data-suffix="">0</span></div>
+              <div class="stat-label">Live Products Shipped</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee-wrap reveal" style="margin-top:80px;">
+      <div class="marquee-track">
+        <span class="marquee-item">Java</span>
+        <span class="marquee-item">Spring Boot</span>
+        <span class="marquee-item">React</span>
+        <span class="marquee-item">React Native</span>
+        <span class="marquee-item">TypeScript</span>
+        <span class="marquee-item">Python</span>
+        <span class="marquee-item">FastAPI</span>
+        <span class="marquee-item">MySQL</span>
+        <span class="marquee-item">Firebase</span>
+        <span class="marquee-item">AWS EC2</span>
+        <span class="marquee-item">Docker</span>
+        <span class="marquee-item">Gemini AI</span>
+        <span class="marquee-item">JWT</span>
+        <span class="marquee-item">Spring Security</span>
+        <span class="marquee-item">Expo</span>
+        <span class="marquee-item">Cloudinary</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">Java</span>
+        <span class="marquee-item">Spring Boot</span>
+        <span class="marquee-item">React</span>
+        <span class="marquee-item">React Native</span>
+        <span class="marquee-item">TypeScript</span>
+        <span class="marquee-item">Python</span>
+        <span class="marquee-item">FastAPI</span>
+        <span class="marquee-item">MySQL</span>
+        <span class="marquee-item">Firebase</span>
+        <span class="marquee-item">AWS EC2</span>
+        <span class="marquee-item">Docker</span>
+        <span class="marquee-item">Gemini AI</span>
+        <span class="marquee-item">JWT</span>
+        <span class="marquee-item">Spring Security</span>
+        <span class="marquee-item">Expo</span>
+        <span class="marquee-item">Cloudinary</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ SKILLS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="skills" class="section">
+    <div class="container">
+      <span class="section-label reveal">Capabilities</span>
+      <h2 class="section-title reveal delay-1">Skills</h2>
+      <div class="skills-grid">
+
+        <div class="skills-category reveal">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">01</div>
+            <span class="skills-cat-label">Languages</span>
+          </div>
+          <div class="skills-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">PL/SQL</span>
+          </div>
+        </div>
+
+        <div class="skills-category reveal delay-1">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">02</div>
+            <span class="skills-cat-label">Frameworks &amp; Libraries</span>
+          </div>
+          <div class="skills-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">React Native</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Expo</span>
+            <span class="skill-tag">Bootstrap</span>
+            <span class="skill-tag">Python-Tkinter</span>
+          </div>
+        </div>
+
+        <div class="skills-category reveal delay-2">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">03</div>
+            <span class="skills-cat-label">Cloud &amp; DevOps</span>
+          </div>
+          <div class="skills-tags">
+            <span class="skill-tag">AWS EC2</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">Cloudinary</span>
+            <span class="skill-tag">Git &amp; GitHub</span>
+            <span class="skill-tag">Maven</span>
+          </div>
+        </div>
+
+        <div class="skills-category reveal delay-3">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">04</div>
+            <span class="skills-cat-label">Databases &amp; Data</span>
+          </div>
+          <div class="skills-tags">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Firestore</span>
+            <span class="skill-tag">SQLite</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">AsyncStorage</span>
+          </div>
+        </div>
+
+        <div class="skills-category reveal delay-4">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">05</div>
+            <span class="skills-cat-label">AI &amp; ML</span>
+          </div>
+          <div class="skills-tags">
+            <span class="skill-tag">Google Gemini API</span>
+            <span class="skill-tag">scikit-learn</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">Intent Detection</span>
+            <span class="skill-tag">OpenRouter AI</span>
+            <span class="skill-tag">Gmail API</span>
+          </div>
+        </div>
+
+        <div class="skills-category reveal delay-5">
+          <div class="skills-cat-header">
+            <div class="skills-cat-icon">06</div>
+            <span class="skills-cat-label">Architecture &amp; Patterns</span>
+          </div>
+          <div class="skills-tags">
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">Microservices</span>
+            <span class="skill-tag">JWT &amp; OAuth2</span>
+            <span class="skill-tag">Spring Security</span>
+            <span class="skill-tag">Design Patterns</span>
+            <span class="skill-tag">SOLID Principles</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ PROJECTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="projects" class="section">
+    <div class="container">
+      <span class="section-label reveal">Selected Work</span>
+      <h2 class="section-title reveal delay-1">Projects</h2>
+      <div class="bento-grid">
+
+        <!-- 1 | Hospital (wide) -->
+        <div class="bento-card reveal" onclick="window.location.href='projects/hospital-management.html'">
+          <img class="bento-img" src="assets/hospital-preview.jpg" alt="AI Hospital Management System" />
+          <div class="bento-footer">
+            <span class="bento-tag">Aug 2026 · Hexaware Designathon</span>
+            <div class="bento-name">AI Hospital Management System</div>
+            <div class="bento-desc">Full-stack cloud app with real-time ML triage, capacity forecasting, and
+              Gemini-powered insights.</div>
+            <div class="bento-stack">
+              <span>React</span><span>Spring
+                Boot</span><span>FastAPI</span><span>MySQL</span><span>Docker</span><span>AWS</span><span>Gemini
+                AI</span>
+            </div>
+          </div>
+          <div class="bento-overlay">
+            <div>
+              <div class="overlay-title">AI Hospital Management System</div>
+              <div class="overlay-desc">A full-stack cloud hospital system built for the Hexaware Designathon. Features
+                3 trained ML models with industry-grade accuracy metrics.</div>
+              <ul class="overlay-features">
+                <li>Severity model: R² = 0.918 (real-time patient triage from vitals</li>
+                <li>Discharge prediction: AUC-ROC = 0.992</li>
+                <li>Bed demand forecasting: R² = 0.71</li>
+                <li>Gemini AI for operational dashboard insights</li>
+                <li>Capacity simulation with Recharts visualisation</li>
+                <li>Deployed on AWS EC2 with Docker containers</li>
+              </ul>
+            </div>
+            <div class="overlay-actions">
+              <span class="overlay-btn overlay-btn-primary">Explore Project <svg width="14" height="14" fill="none"
+                  stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 | Memoro -->
+        <div class="bento-card reveal delay-1" onclick="window.location.href='projects/memoro.html'">
+          <img class="bento-img" src="assets/memoro-preview.jpg" alt="Memoro" />
+          <div class="bento-footer">
+            <span class="bento-tag">Mar 2026 · Final Year Project</span>
+            <div class="bento-name">Memoro</div>
+            <div class="bento-desc">AI memory assistant with cryptographic identity, RAG retrieval, and continuous voice
+              capture.</div>
+            <div class="bento-stack">
+              <span>React Native</span><span>Expo</span><span>Gemini 2.0</span><span>Cloudinary</span>
+            </div>
+          </div>
+          <div class="bento-overlay">
+            <div>
+              <div class="overlay-title">Memoro</div>
+              <div class="overlay-desc">A personal AI memory assistant that listens, stores, and recalls everything you
+                say. No account needed; uses a 256-bit cryptographic key as identity.</div>
+              <ul class="overlay-features">
+                <li>Cryptographic key-based identity (no login/account)</li>
+                <li>Dual AI mode: Conversational + Deep Memory (RAG)</li>
+                <li>Intent detection engine with 88% accuracy</li>
+                <li>PIN + biometric authentication with progressive lockout</li>
+                <li>Offline mode with automatic cloud sync</li>
+              </ul>
+            </div>
+            <div class="overlay-actions">
+              <span class="overlay-btn overlay-btn-primary">Explore Project <svg width="14" height="14" fill="none"
+                  stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 | thecollegeevents.com -->
+        <div class="bento-card reveal delay-2" onclick="window.location.href='projects/college-events.html'">
+          <img class="bento-img" src="assets/college-events-preview.jpg" alt="The College Events" />
+          <div class="bento-footer">
+            <span class="bento-tag">Dec 2025 / Jan 2026 · Live Product</span>
+            <div class="bento-name">thecollegeevents.com</div>
+            <div class="bento-desc">India's college event discovery platform, live with Gemini AI and Cashfree payments.
+            </div>
+            <div class="bento-stack">
+              <span>React</span><span>TypeScript</span><span>Firebase</span><span>Gemini AI</span><span>Cashfree</span>
+            </div>
+          </div>
+          <div class="bento-overlay">
+            <div>
+              <div class="overlay-title">thecollegeevents.com</div>
+              <div class="overlay-desc">A live platform for discovering inter-college events across India. Colleges
+                register, get admin-approved, and promote events with paid listings.</div>
+              <ul class="overlay-features">
+                <li>Live at thecollegeevents.com</li>
+                <li>Multi-role: Students, Colleges, Admin</li>
+                <li>Cashfree payment integration for promotions</li>
+                <li>Gemini AI event recommendations</li>
+                <li>Full SEO + PWA + structured data</li>
+              </ul>
+            </div>
+            <div class="overlay-actions">
+              <span class="overlay-btn overlay-btn-primary">Explore Project <svg width="14" height="14" fill="none"
+                  stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg></span>
+              <a href="#" data-config-href="collegeEventsUrl" target="_blank" rel="noopener"
+                class="overlay-btn overlay-btn-ghost" onclick="event.stopPropagation()">Live Site</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 | HotByte (wide) -->
+        <div class="bento-card reveal" onclick="window.location.href='projects/hotbyte.html'">
+          <img class="bento-img" src="assets/hotbyte-preview.jpg" alt="HotByte" />
+          <div class="bento-footer">
+            <span class="bento-tag">Jul 2026 · Hexaware FSD Final Evaluation</span>
+            <div class="bento-name">HotByte</div>
+            <div class="bento-desc">Full-stack multi-restaurant food delivery app with role-based dashboards and JWT
+              security.</div>
+            <div class="bento-stack">
+              <span>React</span><span>Spring Boot</span><span>MySQL</span><span>JWT</span><span>OAuth2</span>
+            </div>
+          </div>
+          <div class="bento-overlay">
+            <div>
+              <div class="overlay-title">HotByte</div>
+              <div class="overlay-desc">A full-stack food delivery platform built as the final evaluation project for
+                Hexaware's Java + React FSD training. Three distinct roles with dedicated dashboards.</div>
+              <ul class="overlay-features">
+                <li>Customer: Browse, cart, checkout, order tracking</li>
+                <li>Restaurant owner: Menu management, live orders</li>
+                <li>Admin: Manage restaurants, users, orders, menus</li>
+                <li>JWT + OAuth2 authentication with forgot password flow</li>
+                <li>Veg/non-veg + category + sort filters</li>
+              </ul>
+            </div>
+            <div class="overlay-actions">
+              <span class="overlay-btn overlay-btn-primary">Explore Project <svg width="14" height="14" fill="none"
+                  stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg></span>
+              <a href="#" data-config-href="githubHotbyte" target="_blank" rel="noopener"
+                class="overlay-btn overlay-btn-ghost" onclick="event.stopPropagation()">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 | Inbox Widget -->
+        <div class="bento-card reveal delay-1" onclick="window.location.href='projects/inbox-widget.html'">
+          <img class="bento-img" src="assets/email-widget-preview.jpg" alt="Inbox Priority Widget" />
+          <div class="bento-footer">
+            <span class="bento-tag">Aug 2026 · Open Source</span>
+            <div class="bento-name">Inbox Priority Widget</div>
+            <div class="bento-desc">AI Gmail desktop widget that lives on your Windows desktop wallpaper. MIT License.
+            </div>
+            <div class="bento-stack">
+              <span>Python</span><span>Gmail API</span><span>OpenRouter AI</span><span>Tkinter</span>
+            </div>
+          </div>
+          <div class="bento-overlay">
+            <div>
+              <div class="overlay-title">Inbox Priority Widget</div>
+              <div class="overlay-desc">A borderless desktop panel that reads and classifies your Gmail with AI, shows a
+                daily brief, detects deadlines, and drafts replies | all without ever opening Gmail.</div>
+              <ul class="overlay-features">
+                <li>Multi-account Gmail polling (read-only, by design)</li>
+                <li>AI classification: Urgent, Work, Personal, Newsletter</li>
+                <li>Classification caching to optimize free-tier API keys last longer</li>
+                <li>Deadline detection and AI draft replies on demand</li>
+                <li>Windows 11 Mica/Acrylic glass blur, desktop-embedded</li>
+              </ul>
+            </div>
+            <div class="overlay-actions">
+              <span class="overlay-btn overlay-btn-primary">Explore Project <svg width="14" height="14" fill="none"
+                  stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 | Work Force -->
+        <div class="bento-card reveal delay-2" onclick="window.location.href='projects/workforce.html'">
+          <img class="bento-img" src="assets/workforce-preview.jpg" alt="Work Force" />
+          <div class="bento-footer">
+            <span class="bento-tag">Mid 2024 · Play Store</span>
+            <div class="bento-name">Work Force</div>
+            <div class="bento-desc">React Native gig platform connecting workers and recruiters. Live on Google Play
+              Store.</div>
+            <div class="bento-stack">
+              <span>React Native</span><span>Firebase</span><span>Cloud Functions</span><span>FCM</span>
+            </div>
+          </div>
+          <div class="bento-overlay">
+            <div>
+              <div class="overlay-title">Work Force</div>
+              <div class="overlay-desc">A gig economy platform connecting workers with recruiters, published on the
+                Google Play Store. Real-time job listings and crew invite system.</div>
+              <ul class="overlay-features">
+                <li>Live on Google Play Store</li>
+                <li>Real-time gig listings and enrollment</li>
+                <li>Crew invite system with notifications (FCM)</li>
+                <li>Role-based profiles | Worker and Recruiter</li>
+                <li>Firebase Auth, Firestore, Cloud Functions, Storage</li>
+              </ul>
+            </div>
+            <div class="overlay-actions">
+              <span class="overlay-btn overlay-btn-primary">Explore Project <svg width="14" height="14" fill="none"
+                  stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg></span>
+              <a href="#" data-config-href="playStoreUrl" target="_blank" rel="noopener"
+                class="overlay-btn overlay-btn-ghost" onclick="event.stopPropagation()">Play Store</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ TRAINING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="training" class="section">
+    <div class="container">
+      <span class="section-label reveal">Formal Training</span>
+      <h2 class="section-title reveal delay-1">Hexaware Program</h2>
+      <div class="training-card reveal delay-2">
+        <div class="training-header">
+          <div>
+            <div class="training-title">Java &amp; React Full Stack Development</div>
+            <div class="training-meta">Hexaware Technologies | Batch 1</div>
+          </div>
+          <div class="training-period">May 2026 - Jul 2026</div>
+        </div>
+        <div class="training-modules">
+          <div class="training-module">
+            <div class="module-name">Core Java</div>
+            <div class="module-tags">
+              <span class="module-tag">OOP</span><span class="module-tag">Collections</span>
+              <span class="module-tag">Lambda</span><span class="module-tag">Streams</span>
+              <span class="module-tag">Threads</span><span class="module-tag">CompletableFuture</span>
+            </div>
+          </div>
+          <div class="training-module">
+            <div class="module-name">Spring Ecosystem</div>
+            <div class="module-tags">
+              <span class="module-tag">Spring Core</span><span class="module-tag">Spring MVC</span>
+              <span class="module-tag">Spring Boot</span><span class="module-tag">Spring AOP</span>
+              <span class="module-tag">Spring Batch</span><span class="module-tag">Spring REST</span>
+            </div>
+          </div>
+          <div class="training-module">
+            <div class="module-name">Security &amp; Auth</div>
+            <div class="module-tags">
+              <span class="module-tag">Spring Security</span><span class="module-tag">JWT</span>
+              <span class="module-tag">OAuth2</span>
+            </div>
+          </div>
+          <div class="training-module">
+            <div class="module-name">Data Layer</div>
+            <div class="module-tags">
+              <span class="module-tag">JPA</span><span class="module-tag">Hibernate</span>
+              <span class="module-tag">HQL</span><span class="module-tag">JDBC</span>
+              <span class="module-tag">SQL</span><span class="module-tag">PL/SQL</span>
+            </div>
+          </div>
+          <div class="training-module">
+            <div class="module-name">Architecture</div>
+            <div class="module-tags">
+              <span class="module-tag">Microservices</span><span class="module-tag">Design Patterns</span>
+              <span class="module-tag">SOLID</span><span class="module-tag">Maven</span>
+              <span class="module-tag">Docker</span>
+            </div>
+          </div>
+          <div class="training-module">
+            <div class="module-name">Frontend</div>
+            <div class="module-tags">
+              <span class="module-tag">React</span><span class="module-tag">TypeScript</span>
+              <span class="module-tag">JavaScript ES6+</span><span class="module-tag">HTML/CSS</span>
+              <span class="module-tag">Bootstrap</span>
+            </div>
+          </div>
+          <div class="training-module">
+            <div class="module-name">Testing</div>
+            <div class="module-tags">
+              <span class="module-tag">JUnit</span><span class="module-tag">Mockito</span>
+              <span class="module-tag">TDD</span>
+            </div>
+          </div>
+          <div class="training-module">
+            <div class="module-name">Final Evaluation</div>
+            <div class="module-tags">
+              <span class="module-tag">HotByte App</span><span class="module-tag">Full Stack</span>
+              <span class="module-tag">Case Studies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ ACHIEVEMENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <span class="section-label reveal">Recognition</span>
+      <h2 class="section-title reveal delay-1">Top Achievements & Certifications</h2>
+
+      <div class="achievements-split">
+        <div class="achievements-list">
+          <div class="achievement-item active reveal" data-cert="0">
+            <div class="achievement-index">01</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">Cloud Solutions Architect (AWS)</h3>
+              <p class="achievement-sub">Capnis Infotech Private Limited</p>
+            </div>
+            <div class="achievement-arrow">→</div>
+          </div>
+          <div class="achievement-item reveal delay-1" data-cert="1">
+            <div class="achievement-index">02</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">Full Stack Web Developer</h3>
+              <p class="achievement-sub">Capnis Infotech Private Limited</p>
+            </div>
+            <div class="achievement-arrow">→</div>
+          </div>
+          <div class="achievement-item reveal delay-2" data-cert="2">
+            <div class="achievement-index">03</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">Tech Quiz (ARCANE 2K24)</h3>
+              <p class="achievement-sub">Crescent Institute of Technology</p>
+            </div>
+            <div class="achievement-arrow">→</div>
+          </div>
+          <div class="achievement-item reveal delay-3" data-cert="3">
+            <div class="achievement-index">04</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">National Quiz Competition</h3>
+              <p class="achievement-sub">Vel Tech Multi Tech</p>
+            </div>
+            <div class="achievement-arrow">→</div>
+          </div>
+          <div class="achievement-item reveal delay-4" data-cert="4">
+            <div class="achievement-index">05</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">Reinforcement Learning in AI</h3>
+              <p class="achievement-sub">Advanced Specialization Certificate</p>
+            </div>
+            <div class="achievement-arrow">→</div>
+          </div>
+        </div>
+
+        <div class="certificates-raw-stack reveal delay-2">
+          <img src="assets/certificates/cert1.jpg" class="raw-cert-img active" data-cert="0" alt="AWS Certificate">
+          <img src="assets/certificates/cert2.jpg" class="raw-cert-img" data-cert="1"
+            alt="Capnis Intern Certificate">
+          <img src="assets/certificates/cert3.jpg" class="raw-cert-img" data-cert="2" alt="Tech Quiz Certificate">
+          <img src="assets/certificates/cert4.jpg" class="raw-cert-img" data-cert="3" alt="ML Quiz Certificate">
+          <img src="assets/certificates/cert5.jpg" class="raw-cert-img" data-cert="4"
+            alt="Reinforcement Learning Certificate">
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 50px;">
+        <a href="certificates.html" class="overlay-btn overlay-btn-primary" style="padding: 14px 32px; font-size: 1rem; text-decoration: none; display: inline-flex; border-radius: 8px;">
+          View All Certificates 
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left: 8px;">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ TIMELINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="timeline" class="section">
+    <div class="container">
+      <span class="section-label reveal">Journey</span>
+      <h2 class="section-title reveal delay-1">My Journey</h2>
+      <div class="timeline-wrap">
+        <div class="ti-track"></div>
+        <div class="ti-track-fill"></div>
+
+        <!-- â”€â”€ 2019-2022: Education â”€â”€â”€ -->
+        <div class="ti-year reveal"><span class="ti-year-badge">School</span></div>
+
+        <!-- SSLC | RIGHT -->
+        <div class="ti type-edu reveal">
+          <div class="ti-meta">
+            <div class="ti-date">2019 - 2020</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-edu"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-edu">Education</span>
+              <div class="ti-title">SSLC | 91%</div>
+              <div class="ti-sub">St. Mary's School, Athipet, Chennai</div>
+              <div class="ti-tech">State Board · Strong foundation in Sciences &amp; Mathematics</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HSE | LEFT (flip) -->
+        <div class="ti ti-flip type-edu reveal delay-1">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-edu">Education</span>
+              <div class="ti-title">HSE | 82.5%</div>
+              <div class="ti-sub">St. Mary's School, Athipet, Chennai</div>
+              <div class="ti-tech">Higher Secondary · Science Stream · State Board</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-edu"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">2021 - 2022</div>
+          </div>
+        </div>
+
+        <!-- â”€â”€ University â”€â”€â”€ -->
+        <div class="ti-year reveal"><span class="ti-year-badge">University</span></div>
+
+        <!-- B.Tech | RIGHT -->
+        <div class="ti type-edu reveal">
+          <div class="ti-meta">
+            <div class="ti-date">2022 - 2026</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-edu"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-edu">B.Tech in AI &amp; Data Science</span>
+              <div class="ti-title">Veltech Multitech Engineering College</div>
+              <div class="ti-sub">Avadi, Chennai · CGPA: 8.06</div>
+              <div class="ti-tech">Machine Learning · Data Engineering · Full Stack Dev · 6+ projects built</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- â”€â”€ 2024: Internships â”€â”€â”€ -->
+        <div class="ti-year reveal"><span class="ti-year-badge">2024</span></div>
+
+        <!-- Web Design | LEFT (flip) -->
+        <div class="ti ti-flip type-intern reveal">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-intern">Internship</span>
+              <div class="ti-title">Web Design Internship</div>
+              <div class="ti-sub">DLK Career Development, Vadapalani, Chennai</div>
+              <div class="ti-tech">HTML · CSS · JavaScript · UI/UX fundamentals · Real-world client projects</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-intern"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">Mar 2024</div>
+          </div>
+        </div>
+
+        <!-- RL Internship | RIGHT -->
+        <div class="ti type-intern reveal delay-1">
+          <div class="ti-meta">
+            <div class="ti-date">Apr - May 2024</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-intern"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-intern">Internship</span>
+              <div class="ti-title">Reinforcement Learning in AI</div>
+              <div class="ti-sub">RE-tech Solutions Pvt Ltd, Tambaram, Chennai</div>
+              <div class="ti-tech">Q-Learning · DQN · Python · OpenAI Gym · Research paper study</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Work Force | LEFT (flip) -->
+        <div class="ti ti-flip type-project reveal delay-2">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-project">Live Product</span>
+              <div class="ti-title">Work Force | Google Play Store</div>
+              <div class="ti-sub">Gig economy platform connecting workers &amp; recruiters</div>
+              <div class="ti-tech">React Native · Firebase · FCM · Cloud Functions · 2-role system</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-project"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">Mid 2024</div>
+          </div>
+        </div>
+
+        <!-- 1st Place | RIGHT -->
+        <div class="ti type-achieve reveal">
+          <div class="ti-meta">
+            <div class="ti-date">Sep 2024</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-achieve"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-achieve">ðŸ¥‡ Achievement</span>
+              <div class="ti-title">1st Place | Tech Quiz, ARCANE 2024</div>
+              <div class="ti-sub">Cresent Engineering College, Tambaram, Chennai</div>
+              <div class="ti-tech">Inter-college · DSA · Networks · OS · AI · Beat 12 teams</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Stack Internship | LEFT (flip) -->
+        <div class="ti ti-flip type-intern reveal delay-1">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-intern">Internship</span>
+              <div class="ti-title">Full Stack Development Internship</div>
+              <div class="ti-sub">Capnis Infotech, Redhills, Chennai</div>
+              <div class="ti-tech">Java · Spring Boot · React · MySQL · REST APIs · Team workflow</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-intern"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">Dec 2024</div>
+          </div>
+        </div>
+
+        <!-- â”€â”€ 2025 â”€â”€â”€ -->
+        <div class="ti-year reveal"><span class="ti-year-badge">2025</span></div>
+
+        <!-- AWS Cert | RIGHT -->
+        <div class="ti type-achieve reveal">
+          <div class="ti-meta">
+            <div class="ti-date">Jan 2025</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-achieve"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-achieve">Certification</span>
+              <div class="ti-title">AWS Cloud Solutions Architect Associate</div>
+              <div class="ti-sub">Capnis Infotech Private Limited, Chennai</div>
+              <div class="ti-tech">EC2 · VPC · S3 · IAM · ELB · RDS · Cloud architecture patterns</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ML Quiz | LEFT (flip) -->
+        <div class="ti ti-flip type-achieve reveal delay-1">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-achieve">ðŸ¥‰ Achievement</span>
+              <div class="ti-title">3rd Place | ML Quiz</div>
+              <div class="ti-sub">Veltech Multitech Engineering College, Avadi, Chennai</div>
+              <div class="ti-tech">ML algorithms · Model evaluation · Feature engineering</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-achieve"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">Mar 2025</div>
+          </div>
+        </div>
+
+        <!-- â”€â”€ 2026 â”€â”€â”€ -->
+        <div class="ti-year reveal"><span class="ti-year-badge">2026</span></div>
+
+        <!-- College Events | RIGHT -->
+        <div class="ti type-project reveal">
+          <div class="ti-meta">
+            <div class="ti-date">Dec 2025</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-project"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-project">Live Product</span>
+              <div class="ti-title">thecollegeevents.com | Launched Live</div>
+              <div class="ti-sub">India's college event discovery platform, publicly live</div>
+              <div class="ti-tech">React · TypeScript · Firebase · Gemini AI · Cashfree Payments · PWA + SEO</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graduated | LEFT (flip) -->
+        <div class="ti ti-flip type-edu reveal delay-1">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-edu">Graduation</span>
+              <div class="ti-title">B.Tech Graduated | CGPA 8.06</div>
+              <div class="ti-sub">Veltech Multitech | AI &amp; Data Science</div>
+              <div class="ti-tech">4-year journey · 6+ projects · 4 internships · 2 live products shipped</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-edu"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">Mar 2026</div>
+          </div>
+        </div>
+
+        <!-- Memoro | RIGHT -->
+        <div class="ti type-project reveal delay-2">
+          <div class="ti-meta">
+            <div class="ti-date">Mar 2026</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-project"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-project">Final Year Project</span>
+              <div class="ti-title">Memoro | AI Memory Assistant</div>
+              <div class="ti-sub">React Native + Gemini AI | RAG memory, cryptographic identity</div>
+              <div class="ti-tech">256-bit key identity · Dual AI mode · 88% intent accuracy · Offline sync</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- â”€â”€ Hexaware â”€â”€â”€ -->
+        <div class="ti-year reveal"><span class="ti-year-badge">Hexaware</span></div>
+
+        <!-- Hexaware Training | LEFT (flip) -->
+        <div class="ti ti-flip type-train reveal">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-train">Training</span>
+              <div class="ti-title">Java &amp; React Full Stack | Batch 1</div>
+              <div class="ti-sub">Hexaware Technologies</div>
+              <div class="ti-tech">Spring Boot · React · Microservices · JWT · JPA/Hibernate · Docker</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-train"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">May 2026</div>
+          </div>
+        </div>
+
+        <!-- HotByte | RIGHT -->
+        <div class="ti type-project reveal delay-1">
+          <div class="ti-meta">
+            <div class="ti-date">Jul 2026</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-project"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-project">Final Evaluation</span>
+              <div class="ti-title">HotByte | Full Stack Food Delivery</div>
+              <div class="ti-sub">Hexaware Java &amp; React FSD final evaluation project</div>
+              <div class="ti-tech">3 roles: Customer · Restaurant · Admin · JWT + OAuth2 · Role dashboards</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hexaware Cert | LEFT (flip) -->
+        <div class="ti ti-flip type-train reveal delay-2">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-train">Certification</span>
+              <div class="ti-title">Java &amp; React FSD Training | Certified</div>
+              <div class="ti-sub">Hexaware Technologies | Full Stack curriculum completed</div>
+              <div class="ti-tech">100% completion · Case studies · HotByte project · Certified</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-train"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">Jul 2026</div>
+          </div>
+        </div>
+
+        <!-- AI Hospital | RIGHT -->
+        <div class="ti type-project reveal">
+          <div class="ti-meta">
+            <div class="ti-date">Aug 2026</div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-project"></div>
+          </div>
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-project">Designathon</span>
+              <div class="ti-title">AI Hospital Management System</div>
+              <div class="ti-sub">Hexaware Designathon | React + Spring Boot + FastAPI + ML + AWS</div>
+              <div class="ti-tech">R²=0.918 triage · AUC-ROC=0.992 discharge · Gemini AI insights · Docker</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inbox Widget | LEFT (flip) -->
+        <div class="ti ti-flip type-project reveal delay-1">
+          <div class="ti-card">
+            <div class="ti-card-inner">
+              <span class="ti-badge badge-project">Open Source</span>
+              <div class="ti-title">Inbox Priority Widget</div>
+              <div class="ti-sub">AI-powered Gmail desktop widget | Python, MIT License</div>
+              <div class="ti-tech">Python · Gmail API · OpenRouter AI · Tkinter · Windows 11 Mica blur</div>
+            </div>
+          </div>
+          <div class="ti-spine">
+            <div class="ti-dot type-project"></div>
+          </div>
+          <div class="ti-meta">
+            <div class="ti-date">Aug 2026</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- â”€â”€ PROJECTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <!-- â”€â”€ CONTACT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <section id="contact" class="section">
+    <div class="container contact-container">
+      <div class="contact-left reveal">
+        <p class="contact-eyebrow">Open to freelance & collaborations</p>
+        <h2 class="contact-title">Let's Build<br />Something.</h2>
+        <p class="contact-sub">
+          Currently working as a Maverick at Hexaware Technologies.<br />
+          Available for freelance projects, technical consulting, and open-source contributions.
+        </p>
+        
+        <div class="contact-info-links">
+          <a href="mailto:mugeshsiva123456@gmail.com" data-config-mailto class="contact-link">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            mugeshsiva123456@gmail.com
+          </a>
+          <a href="tel:+919677799848" data-config-tel class="contact-link">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            +91 96777 99848
+          </a>
+          <div class="social-links">
+            <a href="#" data-config-href="linkedin" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+            <a href="#" data-config-href="github" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+            <a href="#" data-config-href="playStoreUrl" target="_blank" rel="noopener" class="contact-link">Play Store</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-right reveal delay-2">
+        <form action="https://formsubmit.co/mugeshsiva123456@gmail.com" method="POST" class="contact-form">
+          <input type="hidden" name="_subject" value="New Portfolio Contact!">
+          <input type="hidden" name="_next" value="https://mugeshsiva.com">
+          
+          <div class="form-group">
+            <input type="text" name="name" id="name" required placeholder=" " class="form-input">
+            <label for="name" class="form-label">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" id="email" required placeholder=" " class="form-input">
+            <label for="email" class="form-label">Email Address</label>
+          </div>
+          <div class="form-group">
+            <textarea name="message" id="message" required placeholder=" " class="form-input form-textarea"></textarea>
+            <label for="message" class="form-label">Your Message</label>
+          </div>
+          <button type="submit" class="btn-primary form-submit">
+            Send Message
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">Mugesh Siva | AI &amp; Data Science Engineer | Chennai, India</p>
+      <a href="#hero" class="footer-back">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

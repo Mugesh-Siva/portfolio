@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>thecollegeevents.com | Mugesh Siva</title>
+  <meta name="description" content="India's college event discovery platform. Live at thecollegeevents.com. React + TypeScript + Firebase + Gemini AI + Cashfree payments. Launched Dec 2025 / Jan 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="project-page">
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">MS<span>.</span></a>
+    <div class="nav-links"><a href="../index.html#about">About</a><a href="../index.html#projects">Work</a><a href="../index.html#contact">Contact</a></div>
+    <button class="nav-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="project-hero">
+  <div class="container">
+    <a href="../index.html#projects" class="project-hero-back"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back to all projects</a>
+    <div class="project-status status-live"><span class="status-dot"></span>Live | thecollegeevents.com</div>
+    <h1 class="project-page-title">thecollegeevents<span style="color:var(--accent)">.</span>com</h1>
+    <p class="project-page-sub">India's platform for discovering inter-college technical and cultural events. Colleges register, get admin-approved, and promote events with paid listings powered by Cashfree. Launched December 2025 / January 2026.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="project-preview reveal"><img src="../assets/college-events-preview.jpg" alt="thecollegeevents.com platform" /></div>
+</div>
+
+<div class="project-body">
+  <div class="container">
+    <div class="project-grid">
+      <div>
+        <h2 class="project-section-title reveal">Overview</h2>
+        <p class="project-overview reveal delay-1">thecollegeevents.com is a live web platform that helps students across India discover inter-college events | technical fests, cultural nights, hackathons, workshops, and sports tournaments. It was built from scratch with React, TypeScript, and Vite, backed by Firebase for authentication and Firestore for real-time data. The platform launched in December 2025 / January 2026.</p>
+        <p class="project-overview reveal delay-2">The platform has a complete multi-role architecture: students discover events, colleges register and manage their profile, and an admin panel handles approvals, disputes, and analytics. Colleges can pay to promote events to a wider audience via Cashfree payment gateway integration.</p>
+
+        <h2 class="project-section-title reveal">Key Features</h2>
+        <div class="project-features reveal delay-1">
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Live event discovery</strong>: Browse and filter events by city, event type (Technical/Cultural/Sports/Workshop), and date. Events appear as cards with college name, date, city, and type badge.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Multi-role system</strong>: Students browse and register. Colleges create profiles and post events. Admins approve college registrations, manage reported content, and view analytics.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Cashfree payment integration</strong>: Colleges pay to promote events on the platform's featured sections. Full payment flow with order creation, status verification, and webhook handling.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Gemini AI recommendations</strong>: Event recommendation engine powered by Google Gemini API, suggesting events based on student interest patterns and location.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Media hosting</strong>: College banners and event images stored via Cloudinary. Automatic image optimisation on upload.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>PWA + SEO</strong>: Full service worker setup for offline support, Web app Manifest for install prompts. Structured data (JSON-LD) for events, meta tags, and OpenGraph for sharing. Site is discoverable on Google.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Maintenance mode</strong>: A global maintenance flag in Firestore triggers a full-screen maintenance page, controllable by admin without a deployment.</p></div>
+          <div class="project-feature-item"><span class="feature-arrow">→</span><p class="feature-text"><strong>Typography</strong>: DM Sans, Syne, and JetBrains Mono via Google Fonts | the same stack used in this portfolio.</p></div>
+        </div>
+
+        <h2 class="project-section-title reveal">Challenges &amp; Solutions</h2>
+        <div class="project-challenges reveal delay-1">
+          <div class="challenge-item">
+            <div class="challenge-problem">College approval workflow without a traditional backend</div>
+            <div class="challenge-solution">Firebase Firestore security rules enforce that only admins can update the "approved" field on college documents. The admin panel reads a filtered query of pending colleges and updates their status with a single Firestore write | no custom server needed.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Payment webhook verification in a serverless setup</div>
+            <div class="challenge-solution">Cashfree webhook events are handled by a Firebase Cloud Function that verifies the HMAC signature before updating the promotion status. This keeps payment logic server-side and secure without managing any infrastructure.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Maintenance mode propagation with no downtime</div>
+            <div class="challenge-solution">A single boolean document in Firestore is listened to in real time by the React app. When toggled by an admin, every connected client renders the maintenance screen within milliseconds | zero deployments required.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-sidebar">
+        <div class="sidebar-card reveal">
+          <span class="sidebar-label">Tech Stack</span>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">React</span><span class="sidebar-tag">TypeScript</span>
+            <span class="sidebar-tag">Vite</span><span class="sidebar-tag">Firebase Auth</span>
+            <span class="sidebar-tag">Firestore</span><span class="sidebar-tag">Cloud Functions</span>
+            <span class="sidebar-tag">Cashfree</span><span class="sidebar-tag">Gemini API</span>
+            <span class="sidebar-tag">Cloudinary</span><span class="sidebar-tag">PWA</span>
+            <span class="sidebar-tag">DM Sans</span><span class="sidebar-tag">Syne</span>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-1">
+          <span class="sidebar-label">Links</span>
+          <div class="sidebar-links">
+            <a href="#" data-config-href="collegeEventsUrl" target="_blank" rel="noopener" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Visit thecollegeevents.com
+            </a>
+            <a href="#" data-config-href="githubCollegeEvents" target="_blank" rel="noopener" class="sidebar-link">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-2">
+          <span class="sidebar-label">Status</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-3);line-height:1.7;">Live &amp; publicly accessible<br/>Launched Dec 2025 / Jan 2026<br/>Serving students across India</div>
+        </div>
+      </div>
+    </div>
+    <div class="project-nav-links reveal">
+      <a href="memoro.html" class="project-nav-link"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Prev: Memoro</a>
+      <a href="inbox-widget.html" class="project-nav-link">Next: Inbox Widget<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><p class="footer-copy">Mugesh Siva | AI &amp; Data Science Engineer</p><a href="../index.html" class="footer-back">Back to Portfolio</a></div></footer>
+<script src="../js/config.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

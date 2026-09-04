@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Hospital Management System | Mugesh Siva</title>
+  <meta name="description" content="Full-stack cloud hospital system with ML triage, capacity forecasting, and Gemini AI insights. Built for Hexaware Designathon, Aug 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="project-page">
+<div id="cursor"></div><div id="cursor-ring"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">MS<span>.</span></a>
+    <div class="nav-links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#projects">Work</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <button class="nav-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="project-hero">
+  <div class="container">
+    <a href="../index.html#projects" class="project-hero-back">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to all projects
+    </a>
+    <div class="project-status status-done"><span class="status-dot"></span>Completed | Aug 2026</div>
+    <h1 class="project-page-title">AI Hospital<br/>Management System</h1>
+    <p class="project-page-sub">A full-stack cloud hospital platform with real-time ML-based patient triage, capacity forecasting, and Gemini-powered operational insights. Built for the Hexaware Designathon.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="project-preview reveal">
+    <img src="../assets/hospital-preview.jpg" alt="AI Hospital Management System Dashboard" />
+  </div>
+</div>
+
+<div class="project-body">
+  <div class="container">
+    <div class="project-grid">
+      <div>
+        <h2 class="project-section-title reveal">Overview</h2>
+        <p class="project-overview reveal delay-1">
+          The AI Hospital Management System is a full-stack cloud application built during the Hexaware Designathon in August 2026. It combines a React + TypeScript frontend, a Spring Boot Java backend, a FastAPI-based Python ML microservice, and a Gemini AI integration | all containerised with Docker and deployed on AWS EC2.
+        </p>
+        <p class="project-overview reveal delay-2">
+          The system manages patients, doctors, beds, and admissions across ICU, Emergency, and General wards. What sets it apart is the ML layer: three trained models deliver real-time severity assessment, discharge prediction, and bed demand forecasting | directly embedded into the clinical workflow.
+        </p>
+
+        <h2 class="project-section-title reveal">Key Features</h2>
+        <div class="project-features reveal delay-1">
+          <div class="project-feature-item">
+            <span class="feature-arrow">→</span>
+            <p class="feature-text"><strong>Real-time AI Triage</strong>: Patient severity is reassessed automatically whenever vitals (heart rate, oxygen saturation, body temperature) are updated. No manual refresh needed.</p>
+          </div>
+          <div class="project-feature-item">
+            <span class="feature-arrow">→</span>
+            <p class="feature-text"><strong>Three trained ML models</strong>: severity_model.pkl (R²=0.918), discharge_prediction_model.pkl (AUC-ROC=0.992), admission_prediction_model.pkl (R²=0.71). All stored as pickle files served via FastAPI.</p>
+          </div>
+          <div class="project-feature-item">
+            <span class="feature-arrow">→</span>
+            <p class="feature-text"><strong>Gemini AI Insights</strong>: The dashboard fetches operational summaries from Google Gemini, surfacing proactive recommendations based on current ward state.</p>
+          </div>
+          <div class="project-feature-item">
+            <span class="feature-arrow">→</span>
+            <p class="feature-text"><strong>Capacity Simulation</strong>: A dedicated simulation page lets staff model scenarios (surge days, additional ICU beds, holiday mode) and see projected outcomes charted with Recharts.</p>
+          </div>
+          <div class="project-feature-item">
+            <span class="feature-arrow">→</span>
+            <p class="feature-text"><strong>Ward Monitoring</strong>: Live occupancy bars for ICU, Emergency, and General wards with color-coded thresholds (&lt;70% green, 70-90% amber, &gt;90% red). Doctor-patient ratio tracked per ward.</p>
+          </div>
+          <div class="project-feature-item">
+            <span class="feature-arrow">→</span>
+            <p class="feature-text"><strong>Spring Security + JWT</strong>: Role-based access control protecting all API endpoints. Springdoc OpenAPI / Swagger UI available for full API exploration.</p>
+          </div>
+          <div class="project-feature-item">
+            <span class="feature-arrow">→</span>
+            <p class="feature-text"><strong>AWS EC2 + Docker deployment</strong>: All three services (React, Spring Boot, FastAPI) containerised and deployed. Includes EC2 key management, setup scripts, and seed data utilities.</p>
+          </div>
+        </div>
+
+        <h2 class="project-section-title reveal">Challenges &amp; Solutions</h2>
+        <div class="project-challenges reveal delay-1">
+          <div class="challenge-item">
+            <div class="challenge-problem">ML service startup coordination</div>
+            <div class="challenge-solution">The Java backend has graceful fallbacks when the ML service is temporarily unavailable, so services can start in any order. The ML service must be ready before prediction calls are made, but this is documented clearly.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Real-time forecast status polling</div>
+            <div class="challenge-solution">A 3-second polling interval checks getForecastStatus() in the background. When a forecast completes, the dashboard silently refreshes | so the UI feels responsive without a spinner blocking the screen.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-problem">Multi-ward severity thresholds</div>
+            <div class="challenge-solution">Each ward (ICU, Emergency, General) has different baselines for what constitutes "understaffed". The OccupancyBar component dynamically computes thresholds so the logic isn't duplicated across views.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-sidebar">
+        <div class="sidebar-card reveal">
+          <span class="sidebar-label">Tech Stack</span>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">React</span><span class="sidebar-tag">TypeScript</span>
+            <span class="sidebar-tag">Vite</span><span class="sidebar-tag">Recharts</span>
+            <span class="sidebar-tag">Spring Boot 3.2</span><span class="sidebar-tag">Java 17</span>
+            <span class="sidebar-tag">Spring Security</span><span class="sidebar-tag">JWT</span>
+            <span class="sidebar-tag">Spring Data JPA</span><span class="sidebar-tag">Hibernate</span>
+            <span class="sidebar-tag">Lombok</span><span class="sidebar-tag">Swagger</span>
+            <span class="sidebar-tag">FastAPI</span><span class="sidebar-tag">Python</span>
+            <span class="sidebar-tag">scikit-learn</span><span class="sidebar-tag">MySQL</span>
+            <span class="sidebar-tag">Docker</span><span class="sidebar-tag">AWS EC2</span>
+            <span class="sidebar-tag">Gemini AI</span>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-1">
+          <span class="sidebar-label">ML Model Metrics</span>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">Severity R² = 0.918</span>
+            <span class="sidebar-tag">Discharge AUC-ROC = 0.992</span>
+            <span class="sidebar-tag">Admission R² = 0.71</span>
+          </div>
+        </div>
+        <div class="sidebar-card reveal delay-2">
+          <span class="sidebar-label">Context</span>
+          <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-3);line-height:1.7;">
+            Built for Hexaware Designathon<br/>August 2026
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-nav-links reveal">
+      <a href="memoro.html" class="project-nav-link">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Prev: Memoro
+      </a>
+      <a href="hotbyte.html" class="project-nav-link">
+        Next: HotByte
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="footer-inner"><p class="footer-copy">Mugesh Siva | AI &amp; Data Science Engineer</p><a href="../index.html" class="footer-back">Back to Portfolio</a></div></footer>
+<script src="../js/config.js"></script>`n<script src="../js/main.js"></script>
+</body>
+</html>
+

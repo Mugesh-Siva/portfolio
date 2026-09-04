@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates Gallery | Mugesh Siva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Syne:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Certificates Page Specific Styles */
+    * {
+      cursor: none !important;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Light Particles */
+    .ambient-particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      filter: blur(40px);
+      opacity: 0.15;
+      animation: float 20s infinite ease-in-out alternate;
+    }
+
+    .particle-1 {
+      width: 400px;
+      height: 400px;
+      top: -10%;
+      left: -10%;
+      animation-delay: 0s;
+      background: var(--accent);
+    }
+    
+    .particle-2 {
+      width: 500px;
+      height: 500px;
+      bottom: -20%;
+      right: -10%;
+      animation-delay: -5s;
+      background: rgba(100, 255, 100, 0.4);
+    }
+    
+    .particle-3 {
+      width: 300px;
+      height: 300px;
+      top: 40%;
+      left: 60%;
+      animation-delay: -10s;
+      opacity: 0.1;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(5vw, 10vh) scale(1.1);
+      }
+      100% {
+        transform: translate(-10vw, 5vh) scale(0.9);
+      }
+    }
+
+    .gallery-header {
+      padding: 120px 4vw 60px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .gallery-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: var(--text-2);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .download-all-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 30px;
+      padding: 16px 32px;
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(200, 241, 53, 0.3);
+      border-radius: 50px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.4s var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .download-all-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(200, 241, 53, 0.15) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .download-all-btn:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(200, 241, 53, 0.2);
+      color: var(--accent);
+    }
+
+    .download-all-btn:hover::before {
+      opacity: 1;
+    }
+
+    .download-all-btn svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.4s var(--ease-spring);
+    }
+
+    .download-all-btn:hover svg {
+      transform: translateY(2px) scale(1.1);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 40px;
+      left: 4vw;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-2);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      transition: color 0.3s;
+      z-index: 10;
+    }
+
+    .back-btn:hover {
+      color: var(--accent);
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .cert-section {
+      padding: 40px 4vw 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cert-category-title {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 16px;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+    @media (max-width: 1100px) {
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+
+    .cert-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.4s var(--ease-spring), border-color 0.4s, box-shadow 0.4s;
+    }
+
+    .cert-card::before {
+      content: '';
+      display: block;
+      padding-bottom: 75%; /* 4:3 aspect ratio */
+    }
+
+    .cert-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 20px;
+      transition: transform 0.6s var(--ease-out), filter 0.4s;
+      filter: grayscale(20%) brightness(0.9);
+    }
+
+    .cert-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(200, 241, 53, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(200, 241, 53, 0.2);
+      z-index: 5;
+    }
+
+    .cert-card:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0%) brightness(1);
+    }
+
+    .cert-card-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0) 100%);
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform 0.4s var(--ease-out), opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .cert-card:hover .cert-card-info {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .cert-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .cert-org {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+
+    /* Split Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 4vw;
+      color: #fff;
+      font-size: 2.5rem;
+      line-height: 1;
+      cursor: pointer;
+      background: none;
+      border: none;
+      opacity: 0.6;
+      transition: opacity 0.3s, color 0.3s, transform 0.3s;
+      z-index: 10001;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .lightbox-content {
+      display: flex;
+      flex-direction: row;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      width: 90vw;
+      max-width: 1200px;
+      height: 80vh;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(200, 241, 53, 0.15);
+      transform: scale(0.95) translateY(20px);
+      transition: transform 0.4s var(--ease-spring);
+    }
+
+    .lightbox.active .lightbox-content {
+      transform: scale(1) translateY(0);
+    }
+
+    .lightbox-left {
+      flex: 1;
+      background: #050505;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .lightbox-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .fullscreen-btn {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      background: rgba(20, 20, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s;
+      z-index: 10;
+    }
+
+    .fullscreen-btn:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .fullscreen-btn svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .lightbox-right {
+      width: 400px;
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--surface) 0%, #0a0a0a 100%);
+    }
+
+    .lightbox-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(200, 241, 53, 0.1);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      width: fit-content;
+      border: 1px solid rgba(200, 241, 53, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .lightbox-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .lightbox-org {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 24px;
+      font-family: var(--font-mono);
+      opacity: 0.9;
+    }
+
+    .lightbox-desc {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .overlay-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .overlay-btn-primary {
+      background: var(--accent);
+      color: #000;
+      border: 1px solid transparent;
+    }
+
+    .overlay-btn-primary:hover {
+      box-shadow: 0 6px 24px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      .lightbox-content {
+        flex-direction: column;
+        height: 90vh;
+        overflow-y: auto;
+      }
+      .lightbox-right {
+        width: 100%;
+        padding: 30px;
+      }
+      .lightbox-left {
+        min-height: 40vh;
+        padding: 20px;
+      }
+    }
+
+    /* True Fullscreen Modal */
+    .true-fullscreen {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 10005;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .true-fullscreen.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .true-fullscreen img {
+      max-width: 95vw;
+      max-height: 95vh;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Custom Cursor (same IDs as index.html so main.js picks them up) -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Background Ambient Particles -->
+  <div class="ambient-particles">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+  </div>
+
+  <!-- Background Grid -->
+  <div class="bg-grid"></div>
+
+  <header class="gallery-header">
+    <a href="index.html" class="back-btn" data-hover="true">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Portfolio
+    </a>
+    <h1 class="gallery-title">The Showcase</h1>
+    <p class="gallery-subtitle">A curated collection of professional certifications, symposium achievements, and special awards.</p>
+    
+    <a href="assets/certificates/Mugesh_Siva_Certificates.zip" download class="download-all-btn" data-hover="true">
+      Download All Certificates
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+      </svg>
+    </a>
+  </header>
+
+  <main>
+    <!-- Internships & Certifications -->
+    <section class="cert-section">
+      <h2 class="cert-category-title">// Internships &amp; Professional Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert1.jpg"
+             data-pdf="assets/certificates/cert1.pdf"
+             data-title="Cloud Solutions Architect"
+             data-org="AWS Certification"
+             data-desc="Earned the prestigious AWS Cloud Solutions Architect certification. Demonstrates expertise in designing highly available, cost-efficient, fault-tolerant, and scalable distributed systems on AWS.">
+          <img src="assets/certificates/cert1.jpg" alt="AWS Cloud Solutions Architect">
+          <div class="cert-card-info">
+            <div class="cert-name">Cloud Solutions Architect</div>
+            <div class="cert-org">AWS Certification</div>
+          </div>
+        </div>
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert2.jpg"
+             data-pdf="assets/certificates/cert2.pdf"
+             data-title="Full Stack Developer Intern"
+             data-org="Capnis Infotech"
+             data-desc="Successfully completed a comprehensive Full Stack Developer Internship at Capnis. Built end-to-end web applications, managed databases, and developed robust APIs using modern tech stacks.">
+          <img src="assets/certificates/cert2.jpg" alt="Full Stack Developer Intern">
+          <div class="cert-card-info">
+            <div class="cert-name">Full Stack Developer Intern</div>
+            <div class="cert-org">Capnis</div>
+          </div>
+        </div>
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert5.jpg"
+             data-pdf="assets/certificates/cert5.pdf"
+             data-title="Reinforcement Learning In AI"
+             data-org="AI Specialization"
+             data-desc="Completed advanced coursework and projects focusing on Reinforcement Learning. Gained deep understanding of Q-learning, policy gradients, and deep reinforcement neural networks.">
+          <img src="assets/certificates/cert5.jpg" alt="Reinforcement Learning In AI">
+          <div class="cert-card-info">
+            <div class="cert-name">Reinforcement Learning In AI</div>
+            <div class="cert-org">AI Specialization</div>
+          </div>
+        </div>
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert6.jpg"
+             data-pdf="assets/certificates/cert6.pdf"
+             data-title="Web Design Certification"
+             data-org="DLK Technologies"
+             data-desc="Certified in advanced Web Design and UI/UX principles. Demonstrated mastery in creating responsive, accessible, and highly aesthetic modern user interfaces.">
+          <img src="assets/certificates/cert6.jpg" alt="Web Design Certification">
+          <div class="cert-card-info">
+            <div class="cert-name">Web Design Certification</div>
+            <div class="cert-org">DLK</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Symposiums & Competitions -->
+    <section class="cert-section">
+      <h2 class="cert-category-title">// Symposiums &amp; Competitions</h2>
+      <div class="cert-grid">
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert3.jpg"
+             data-pdf="assets/certificates/cert3.pdf"
+             data-title="1st Place - Tech Quiz"
+             data-org="National Symposium (ARCANE 2K24)"
+             data-desc="Secured 1st Place in the National Level Technical Quiz Competition at ARCANE 2K24, demonstrating deep technical knowledge across computer science domains.">
+          <img src="assets/certificates/cert3.jpg" alt="1st Place - Tech Quiz">
+          <div class="cert-card-info">
+            <div class="cert-name">1st Place - Tech Quiz</div>
+            <div class="cert-org">National Symposium</div>
+          </div>
+        </div>
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert4.jpg"
+             data-pdf="assets/certificates/cert4.pdf"
+             data-title="3rd Place - ML Quiz"
+             data-org="National Symposium"
+             data-desc="Secured 3rd Place in the Machine Learning specific Quiz competition, answering advanced questions on model architecture, algorithms, and data science principles.">
+          <img src="assets/certificates/cert4.jpg" alt="3rd Place - ML Quiz">
+          <div class="cert-card-info">
+            <div class="cert-name">3rd Place - ML Quiz</div>
+            <div class="cert-org">National Symposium</div>
+          </div>
+        </div>
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert8.jpg"
+             data-pdf="assets/certificates/cert8.pdf"
+             data-title="Coding Contest Participant"
+             data-org="Technical Symposium"
+             data-desc="Participated and successfully completed algorithmic challenges in a high-pressure, time-constrained National Level Coding Contest.">
+          <img src="assets/certificates/cert8.jpg" alt="Coding Contest Participant">
+          <div class="cert-card-info">
+            <div class="cert-name">Coding Contest Participant</div>
+            <div class="cert-org">Technical Symposium</div>
+          </div>
+        </div>
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert9.jpg"
+             data-pdf="assets/certificates/cert9.pdf"
+             data-title="Startup Ideation Participant"
+             data-org="National Symposium"
+             data-desc="Presented a comprehensive technology-driven startup idea to a panel of judges, demonstrating both technical feasibility and business acumen.">
+          <img src="assets/certificates/cert9.jpg" alt="Startup Ideation Participant">
+          <div class="cert-card-info">
+            <div class="cert-name">Startup Ideation Participant</div>
+            <div class="cert-org">National Symposium</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Awards -->
+    <section class="cert-section">
+      <h2 class="cert-category-title">// Special Awards</h2>
+      <div class="cert-grid">
+        <div class="cert-card" data-hover="true"
+             data-src="assets/certificates/cert7.jpg"
+             data-pdf="assets/certificates/cert7.pdf"
+             data-title="Rajya Puraskar Award"
+             data-org="Bharat Scouts &amp; Guides"
+             data-desc="Awarded the prestigious Rajya Puraskar (Governor's Award) in the Bharat Scouts &amp; Guides, signifying supreme dedication, leadership, and discipline.">
+          <img src="assets/certificates/cert7.jpg" alt="Rajya Puraskar Award">
+          <div class="cert-card-info">
+            <div class="cert-name">Rajya Puraskar Award</div>
+            <div class="cert-org">Bharat Scouts &amp; Guides</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding: 40px; text-align: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-2); position: relative; z-index: 1;">
+    &copy; 2026 Mugesh Siva. All rights reserved.
+  </footer>
+
+  <!-- Split View Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content" id="lightboxContent">
+      <div class="lightbox-left">
+        <div class="lightbox-img-wrapper">
+          <img src="" alt="Certificate View" class="lightbox-img" id="lightboxImg">
+          <button class="fullscreen-btn" id="fullscreenBtn" title="View Full Screen" data-hover="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="lightbox-right">
+        <button class="lightbox-close" id="lightboxClose" data-hover="true">&times;</button>
+        <span class="lightbox-badge">Verified Achievement</span>
+        <h2 class="lightbox-title" id="lightboxTitle">Title</h2>
+        <div class="lightbox-org" id="lightboxOrg">Organization</div>
+        <p class="lightbox-desc" id="lightboxDesc">Description goes here</p>
+        
+        <div class="lightbox-actions">
+          <a href="#" download target="_blank" class="overlay-btn overlay-btn-primary" id="downloadBtn" data-hover="true">
+            Download Certificate
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:8px;">
+              <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- True Fullscreen Modal -->
+  <div class="true-fullscreen" id="trueFullscreen">
+    <button class="lightbox-close" id="trueFullscreenClose" style="z-index: 10006;" data-hover="true">&times;</button>
+    <img src="" alt="Full Screen Certificate" id="trueFullscreenImg">
+  </div>
+
+  <!-- Link the exact same main JS file used in index.html for perfect cursor sync -->
+  <script src="js/main.js"></script>
+  
+  <!-- Lightbox Specific Logic -->
+  <script>
+    const certCards = document.querySelectorAll('.cert-card');
+    
+    // Split Lightbox Elements
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxOrg = document.getElementById('lightboxOrg');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+    // True Fullscreen Elements
+    const trueFullscreen = document.getElementById('trueFullscreen');
+    const trueFullscreenImg = document.getElementById('trueFullscreenImg');
+    const trueFullscreenClose = document.getElementById('trueFullscreenClose');
+
+    // Open Split Lightbox
+    certCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const src = card.getAttribute('data-src');
+        const title = card.getAttribute('data-title');
+        const org = card.getAttribute('data-org');
+        const desc = card.getAttribute('data-desc');
+
+        lightboxImg.src = src;
+        lightboxTitle.textContent = title;
+        lightboxOrg.textContent = org;
+        lightboxDesc.textContent = desc;
+        
+        // Setup download button to point to actual PDF
+        const pdfSrc = card.getAttribute('data-pdf');
+        downloadBtn.href = pdfSrc || src; // Fallback to img if pdf missing
+        downloadBtn.target = "_blank"; // Ensure it doesn't take over current window
+        downloadBtn.download = title.replace(/\s+/g, '_') + '_Certificate.pdf';
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => { lightboxImg.src = ''; }, 400);
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Fullscreen Logic
+    fullscreenBtn.addEventListener('click', () => {
+      trueFullscreenImg.src = lightboxImg.src;
+      trueFullscreen.classList.add('active');
+    });
+
+    const closeTrueFullscreen = () => {
+      trueFullscreen.classList.remove('active');
+      setTimeout(() => { trueFullscreenImg.src = ''; }, 300);
+    };
+
+    trueFullscreenClose.addEventListener('click', closeTrueFullscreen);
+    trueFullscreen.addEventListener('click', (e) => {
+      if (e.target === trueFullscreen || e.target === trueFullscreenImg) {
+        closeTrueFullscreen();
+      }
+    });
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (trueFullscreen.classList.contains('active')) {
+          closeTrueFullscreen();
+        } else if (lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
