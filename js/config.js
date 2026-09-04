@@ -61,14 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Fix tel links */
   document.querySelectorAll('[data-config-tel]').forEach(el => {
     el.href = 'tel:' + PORTFOLIO_CONFIG.phone;
-    if (!el.querySelector('svg')) {
-      el.textContent = PORTFOLIO_CONFIG.phoneDisplay;
-    } else {
-      /* preserve icon, only update text node */
-      el.childNodes.forEach(n => {
-        if (n.nodeType === 3) n.textContent = ' ' + PORTFOLIO_CONFIG.phoneDisplay;
-      });
-    }
   });
 
 });
