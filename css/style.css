@@ -35,6 +35,7 @@
 
   --font-head: 'Syne', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -331,10 +332,28 @@ body.cursor-hover #cursor-ring {
   color: var(--text-2);
   transition: color 0.2s;
   font-family: var(--font-mono);
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s var(--ease-out);
 }
 
 .nav-links a:hover {
   color: var(--accent);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
 }
 
 .nav-cta {
@@ -369,7 +388,7 @@ body.cursor-hover #cursor-ring {
   transition: transform 0.3s, opacity 0.3s;
 }
 
-/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── HERO ───────────────────────────────────────────────────────────────────── */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -416,7 +435,7 @@ body.cursor-hover #cursor-ring {
   color: var(--accent);
 }
 
-/* â”€â”€ Skill strip below name â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Skill strip below name ───────────────────────────────────────────────── */
 .hero-skill-cycle {
   display: flex;
   align-items: center;
@@ -465,8 +484,8 @@ body.cursor-hover #cursor-ring {
 
 .hero-descriptor {
   font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--text-3);
+  font-size: 0.9rem;
+  color: var(--text-2);
   margin-bottom: 48px;
   opacity: 0;
   animation: fadeUp 0.7s var(--ease-out) 0.85s forwards;
@@ -572,7 +591,7 @@ body.cursor-hover #cursor-ring {
   position: absolute;
   inset: -1px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+  background: linear-gradient(145deg, rgba(200, 241, 53, 0.35) 0%, transparent 55%);
   z-index: 0;
 }
 
@@ -642,7 +661,7 @@ body.cursor-hover #cursor-ring {
   animation: scrollPulse 2s ease infinite;
 }
 
-/* â”€â”€ ABOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── ABOUT ──────────────────────────────────────────────────────────────────── */
 #about {
   background: var(--bg-alt);
 }
@@ -672,6 +691,7 @@ body.cursor-hover #cursor-ring {
   color: var(--text-2);
   line-height: 1.75;
   margin-bottom: 36px;
+  max-width: 58ch;
 }
 
 .about-stats {
@@ -748,7 +768,7 @@ body.cursor-hover #cursor-ring {
   font-size: 1.2rem;
 }
 
-/* â”€â”€ TIMELINE — True alternating 3-column layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── TIMELINE — True alternating 3-column layout ───────────────────────────── */
 #timeline {
   background: var(--bg);
 }
@@ -760,7 +780,7 @@ body.cursor-hover #cursor-ring {
   padding: 4px 0 60px;
 }
 
-/* â”€ Central spine â”€ */
+/* ── Central spine ── */
 .ti-track {
   position: absolute;
   left: 50%;
@@ -782,12 +802,11 @@ body.cursor-hover #cursor-ring {
   width: 2px;
   height: 0;
   transform: translateX(-50%);
-  background: linear-gradient(to bottom, var(--accent), rgba(200, 241, 53, 0.4));
+  background: linear-gradient(to bottom, var(--accent), rgba(200, 241, 53, 0.3));
   transition: height 0.1s linear;
-  box-shadow: 0 0 12px rgba(200, 241, 53, 0.5), 0 0 4px rgba(200, 241, 53, 0.8);
 }
 
-/* â”€ Year group divider â”€ */
+/* ── Year group divider ── */
 .ti-year {
   display: flex;
   align-items: center;
@@ -826,7 +845,7 @@ body.cursor-hover #cursor-ring {
   border-radius: 100px;
 }
 
-/* â”€ Each row: 3-column grid (left | spine | right) â”€ */
+/* ── Each row: 3-column grid (left | spine | right) ── */
 .ti {
   display: grid;
   grid-template-columns: 1fr 44px 1fr;
@@ -840,7 +859,7 @@ body.cursor-hover #cursor-ring {
   margin-bottom: 0;
 }
 
-/* â”€ Spine column (always col-2 in DOM) â”€ */
+/* ── Spine column (always col-2 in DOM) ── */
 .ti-spine {
   display: flex;
   flex-direction: column;
@@ -850,7 +869,7 @@ body.cursor-hover #cursor-ring {
   z-index: 4;
 }
 
-/* â”€ Dot â”€ */
+/* ── Dot ── */
 .ti-dot {
   width: 16px;
   height: 16px;
@@ -924,15 +943,15 @@ body.cursor-hover #cursor-ring {
   background: radial-gradient(circle, rgba(196, 181, 253, 0.12) 0%, transparent 70%);
 }
 
-/* â”€ Meta (date) column â”€ */
-/* Normal: meta is col-1 â†’ date right-aligned */
+/* ── Meta (date) column ── */
+/* Normal: meta is col-1 → date right-aligned */
 .ti-meta {
   padding-top: 24px;
   padding-right: 22px;
   text-align: right;
 }
 
-/* Flip: meta is col-3 â†’ date left-aligned */
+/* Flip: meta is col-3 → date left-aligned */
 .ti.ti-flip .ti-meta {
   padding-right: 0;
   padding-left: 22px;
@@ -947,13 +966,13 @@ body.cursor-hover #cursor-ring {
   line-height: 1.5;
 }
 
-/* â”€ Card column â”€ */
-/* Normal: card is col-3 â†’ indent from left */
+/* ── Card column ── */
+/* Normal: card is col-3 → indent from left */
 .ti-card {
   padding: 10px 0 10px 22px;
 }
 
-/* Flip: card is col-1 â†’ indent from right */
+/* Flip: card is col-1 → indent from right */
 .ti.ti-flip .ti-card {
   padding: 10px 22px 10px 0;
 }
@@ -969,7 +988,7 @@ body.cursor-hover #cursor-ring {
   overflow: visible;
 }
 
-/* â”€ Arrow notch: right-side cards point LEFT toward spine â”€ */
+/* ── Arrow notch: right-side cards point LEFT toward spine ── */
 .ti-card-inner::before {
   content: '';
   position: absolute;
@@ -997,7 +1016,7 @@ body.cursor-hover #cursor-ring {
   z-index: 3;
 }
 
-/* â”€ Left-side cards (flip) point RIGHT toward spine â”€ */
+/* ── Left-side cards (flip) point RIGHT toward spine ── */
 .ti.ti-flip .ti-card-inner::before {
   left: auto;
   right: -8px;
@@ -1123,11 +1142,10 @@ body.cursor-hover #cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
+  height: 2px;
   background: var(--accent);
   width: 0%;
   z-index: 10000;
-  box-shadow: 0 0 10px var(--accent-glow);
   transition: width 0.1s ease-out;
   pointer-events: none;
 }
@@ -1173,7 +1191,7 @@ body.cursor-hover #cursor-ring {
 .ti-title {
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   color: var(--text);
   margin-bottom: 4px;
   line-height: 1.3;
@@ -1207,7 +1225,7 @@ body.cursor-hover #cursor-ring {
   box-shadow: 0 0 8px rgba(200, 241, 53, 0.5);
 }
 
-/* â”€â”€ New left-rail timeline items â”€â”€ */
+/* ── New left-rail timeline items ── */
 .timeline-item {
   display: grid;
   grid-template-columns: 148px 1fr;
@@ -1460,7 +1478,7 @@ body.cursor-hover #cursor-ring {
   letter-spacing: 0.02em;
 }
 
-/* â”€â”€ PROJECTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── PROJECTS ─────────────────────────────────────────────────────────────── */
 #projects {
   background: var(--bg-alt);
 }
@@ -1501,9 +1519,9 @@ body.cursor-hover #cursor-ring {
 
 /* Cool animated glow and float effect on hover */
 .bento-card:hover {
-  border-color: rgba(200, 241, 53, 0.6);
-  transform: translateY(-8px) scale(1.015);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(200, 241, 53, 0.5), 0 0 30px rgba(200, 241, 53, 0.15);
+  border-color: rgba(200, 241, 53, 0.45);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(200, 241, 53, 0.3);
   z-index: 10;
 }
 
@@ -2805,285 +2823,6 @@ footer {
   }
 }
 
-/* â”€â”€ CONTACT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-#contact {
-  position: relative;
-  background: var(--bg-alt);
-  padding: 160px 0;
-  overflow: hidden;
-}
-
-/* Ambient Background Glow */
-.contact-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80vw;
-  height: 80vw;
-  background: radial-gradient(circle, rgba(162, 255, 0, 0.08) 0%, transparent 60%);
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.contact-container {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-/* Left Side - Typography */
-.contact-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-2);
-  margin-bottom: 24px;
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(162, 255, 0, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(162, 255, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(162, 255, 0, 0); }
-}
-
-.contact-title {
-  font-family: var(--font-head);
-  font-weight: 800;
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-  color: var(--text);
-  margin-bottom: 24px;
-  background: linear-gradient(180deg, #fff 0%, #aaa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.contact-sub {
-  font-size: 1.15rem;
-  color: var(--text-2);
-  line-height: 1.6;
-  margin-bottom: 56px;
-  max-width: 480px;
-}
-
-/* Contact Cards (Email & Phone) */
-.contact-info-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 16px 24px;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.contact-card:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(162, 255, 0, 0.3);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-}
-
-.contact-card-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(162, 255, 0, 0.1);
-  color: var(--accent);
-  border-radius: 50%;
-}
-
-.contact-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.contact-card-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-3);
-}
-
-.contact-card-value {
-  font-family: var(--font-sans);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-
-/* Social Pills */
-.social-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.social-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 100px;
-  color: var(--text-2);
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.social-pill svg {
-  width: 18px;
-  height: 18px;
-}
-
-.social-pill:hover {
-  background: var(--text);
-  color: var(--bg);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
-}
-
-/* Right Side - Form */
-.form-wrapper {
-  position: relative;
-}
-
-.contact-form {
-  background: rgba(20, 20, 20, 0.6);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  padding: 48px;
-  border-radius: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.form-group {
-  position: relative;
-}
-
-.form-input {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text);
-  padding: 20px 24px;
-  border-radius: 16px;
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
-  transition: all 0.3s;
-  outline: none;
-}
-
-.form-input:focus {
-  border-color: var(--accent);
-  background: rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 0 4px rgba(162, 255, 0, 0.1);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-.form-label {
-  position: absolute;
-  top: 22px;
-  left: 24px;
-  color: var(--text-3);
-  pointer-events: none;
-  transition: all 0.2s ease-out;
-  font-size: 1.05rem;
-}
-
-/* Floating Label Magic */
-.form-input:focus ~ .form-label,
-.form-input:not(:placeholder-shown) ~ .form-label {
-  transform: translateY(-38px) scale(0.85);
-  transform-origin: left top;
-  color: var(--accent);
-}
-
-/* Glowing Submit Button */
-.form-submit-glow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  width: 100%;
-  background: var(--accent);
-  color: #000;
-  border: none;
-  padding: 20px;
-  border-radius: 16px;
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.15rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 12px 32px rgba(162, 255, 0, 0.2);
-}
-
-.form-submit-glow:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 48px rgba(162, 255, 0, 0.4);
-  background: #b1ff1a;
-}
-
-@media (max-width: 900px) {
-  .contact-container {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-  
-  .contact-title {
-    font-size: clamp(2.8rem, 10vw, 4rem);
-  }
-  
-  .contact-form {
-    padding: 32px 24px;
-  }
-}
-
 /* ── CONTACT ──────────────────────────────────────────────────────────── */
 #contact {
   position: relative;
@@ -3317,5 +3056,133 @@ footer {
   
   .contact-form {
     padding: 32px 24px;
+  }
+}
+
+/* ── Section CTA Button ──────────────────────────────────────────────────── */
+.section-cta-wrap {
+  text-align: center;
+  margin-top: 56px;
+}
+
+.btn-section-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: transform 0.2s var(--ease-spring), box-shadow 0.2s;
+}
+
+.btn-section-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(200, 241, 53, 0.2);
+}
+
+/* ── Stat card improved hover ────────────────────────────────────────────── */
+.stat-card:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+/* ── Improved skill tag hover specificity ────────────────────────────────── */
+.skill-tag:hover {
+  color: var(--accent);
+  border-color: rgba(200, 241, 53, 0.5);
+  background: var(--accent-dim);
+}
+
+/* ── Focus visible states (keyboard nav accessibility) ───────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Sidebar link improved hover ────────────────────────────────────────── */
+.sidebar-link {
+  transition: border-color 0.2s, color 0.2s, transform 0.2s var(--ease-out);
+}
+
+/* ── Bento card: subtle image scale on non-hover too ────────────────────── */
+.bento-img {
+  opacity: 0.18;
+}
+
+/* ── Achievement active highlight ───────────────────────────────────────── */
+.achievement-item:hover,
+.achievement-item.active {
+  box-shadow: none;
+}
+
+/* ── Project preview border treatment ───────────────────────────────────── */
+.project-preview {
+  transition: box-shadow 0.3s var(--ease-out);
+}
+
+.project-preview:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Smooth training module focus ───────────────────────────────────────── */
+.training-module {
+  transition: border-color 0.2s, transform 0.2s var(--ease-out), background 0.2s;
+}
+
+.training-module:hover {
+  background: var(--surface-2);
+}
+
+/* ── Nav CTA refined hover ──────────────────────────────────────────────── */
+.nav-cta:hover {
+  opacity: 1;
+  background: #b1e81a;
+  transform: translateY(-1px);
+}
+
+/* ── Scroll cue reduced visual noise ────────────────────────────────────── */
+.scroll-line {
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+/* ── Timeline year badge padding fix ───────────────────────────────────── */
+.ti-year-badge {
+  white-space: nowrap;
+}
+
+/* ── Project hero bottom border treatment ───────────────────────────────── */
+.project-hero {
+  border-bottom-color: var(--border);
+}
+
+/* ── Contact section responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #contact {
+    padding: 100px 0;
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+  }
+
+  .social-pills {
+    gap: 8px;
+  }
+
+  .social-pill {
+    padding: 10px 18px;
+    font-size: 0.88rem;
+  }
+
+  .contact-card-value {
+    font-size: 0.95rem;
   }
 }
